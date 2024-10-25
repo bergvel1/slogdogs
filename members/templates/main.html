@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Slog Dogs
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <h1>Slog Dogs</h1>
+
+      {% load static %}
+      <img src="{% static 'images/logo.PNG' %}" alt="SLOG" style="width:300px;">
+
+    <h3>Members</h3>
+
+    <p>Check out all our <a href="members/">members</a></p>
+  </div>
+{% endblock %}
