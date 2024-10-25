@@ -1,3 +1,4 @@
 # created by virtualenv automatically
 /.env
 *.pyc
+.DS_Store
