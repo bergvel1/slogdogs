@@ -9,43 +9,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
-      }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
     </style>
 
 
     <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
+    <link href="{% static 'cover.css' %}" rel="stylesheet">
 </head>
 <body class="d-flex h-100 text-center text-white bg-dark">
 
-        <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div>
-                <h3 class="float-md-start mb-0">Slog Dogs</h3>
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    <a class="nav-link" href="/members">Members</a>
-                    <a class="nav-link" href="/polls">Polls</a>
-                </nav>
+<div class="d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"/>
+                    </svg>
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+                    <li><a href="/members" class="nav-link px-2 text-white">Members</a></li>
+                    <li><a href="/polls" class="nav-link px-2 text-white">Polls</a></li>
+                </ul>
+
+                <div class="text-end">
+                    {% if user.is_authenticated %}
+                        <form action="{% url 'logout' %}" method="post">
+                            {% csrf_token %}
+                            Welcome, {{ user.username }}.
+                            <button class="btn btn-outline-light me-2" type="submit">Log Out</button>
+                        </form>
+                    {% else %}
+                        <button type="button" onclick="location.href='{% url 'login' %}'"
+                                class="btn btn-outline-light me-2">Login
+                        </button>
+                    {% endif %}
+
+                </div>
             </div>
-        </header>
-                {% block content %}
-                {% endblock %}
-
-
         </div>
+    </header>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    {% block content %}
+    {% endblock %}
+    </div>
+
+
+</div>
 
 </div>
 
