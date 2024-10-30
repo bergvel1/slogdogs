@@ -1,0 +1,15 @@
+{% extends "master.html" %}
+
+{% block title %}
+  Slog Dogs
+{% endblock %}
+
+{% block content %}
+  <div class="main">
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Log In</button>
+    </form>
+  </div>
+{% endblock %}

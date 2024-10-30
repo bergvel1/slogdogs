@@ -151,3 +151,6 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR + '/globalstatic'
 ]
+
+LOGIN_REDIRECT_URL = "main"
+LOGOUT_REDIRECT_URL = "main"
