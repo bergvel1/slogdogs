@@ -5,26 +5,23 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main">
-        <h1>Slog Dogs</h1>
 
-        {% load static %}
-        <img src="{% static 'images/logo.PNG' %}" alt="SLOG" style="width:300px;">
 
-        <br>
-        {% if user.is_authenticated %}
-            Hi {{ user.username }}!
-            <form action="{% url 'logout' %}" method="post">
-                {% csrf_token %}
-                <button type="submit">Log Out</button>
-            </form>
-        {% else %}
-            <p>You are not logged in</p>
-            <a href="{% url 'login' %}">Log In</a>
-        {% endif %}
+        <main class="px-3">
+            {% load static %}
+            <img src="{% static 'images/logo.PNG' %}" alt="SLOG" style="width:300px;">
+            <p class="lead">Under construction, pardon our dust.</p>
+            <p class="lead">
+                {% if user.is_authenticated %}
+                    Hi {{ user.username }}!
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Log Out</button>
+                    </form>
+                {% else %}
+                    <p>You are not logged in</p>
+                    <a href="{% url 'login' %}">Log In</a>
+                {% endif %}    </p>
 
-        <h3>Members</h3>
-
-        <p>Check out all our <a href="members/">members</a></p>
-    </div>
+        </main>
 {% endblock %}
